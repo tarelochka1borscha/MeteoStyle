@@ -69,8 +69,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Pages\Новая папка\" />
 	  <Folder Include="Settings\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

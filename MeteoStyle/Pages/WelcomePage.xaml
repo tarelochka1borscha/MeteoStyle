@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MeteoStyle.MainPage"
+             x:Class="MeteoStyle.WelcomePage"
              Background="LightYellow"
              >
 
@@ -11,13 +11,13 @@
             <Label Text="Для продолжения введите данные." FontSize="30" TextColor="Black"/>
             <VerticalStackLayout>
                 <Label Text="Укажите местоположение:" FontSize="30" TextColor="Black"/>
-                <Entry Placeholder="Москва" FontSize="30" TextColor="Black" Background="White"/>
+                <Entry x:Name="EntryCity" Placeholder="Москва" FontSize="30" TextColor="Black" Background="White"/>
             </VerticalStackLayout>
             <Label Text="Выберите предпочтения:" FontSize="30" TextColor="Black"/>
-            <RadioButton GroupName="Feelings" Content="Не переношу, когда открывают форточки в автобусе!" TextColor="Black"/>
-            <RadioButton GroupName="Feelings" Content="Надоели бабки, которые постоянно мерзнут!" TextColor="Black"/>
+            <RadioButton x:Name="RBCold" GroupName="Feelings" Content="Не переношу, когда открывают форточки в автобусе!" TextColor="Black"/>
+            <RadioButton x:Name="RBWarm" GroupName="Feelings" Content="Надоели бабки, которые постоянно мерзнут!" TextColor="Black"/>
             <RadioButton GroupName="Feelings" Content="Я НОрм@лЬНЫй!" TextColor="Black" IsChecked="True"/>
-            <Button Text="Начать" Background="Orange"/>
+            <Button Text="Начать" Clicked="GoToHomePage" Background="Orange"/>
         </VerticalStackLayout>
     </ScrollView>
 
