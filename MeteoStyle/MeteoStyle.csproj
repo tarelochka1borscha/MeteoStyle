@@ -63,9 +63,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="WelcomePage.xaml.cs">
+	  <Compile Update="Pages\WelcomePage.xaml.cs">
 	    <DependentUpon>WelcomePage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Pages\Новая папка\" />
+	  <Folder Include="Settings\" />
 	</ItemGroup>
 
 </Project>
