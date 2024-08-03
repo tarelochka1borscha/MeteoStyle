@@ -57,6 +57,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Settings\**" />
+	  <Compile Remove="Settings\**" />
+	  <EmbeddedResource Remove="Settings\**" />
+	  <MauiCss Remove="Settings\**" />
+	  <MauiXaml Remove="Settings\**" />
+	  <None Remove="Settings\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -66,10 +75,6 @@
 	  <Compile Update="Pages\WelcomePage.xaml.cs">
 	    <DependentUpon>WelcomePage.xaml</DependentUpon>
 	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Settings\" />
 	</ItemGroup>
 
 	<ItemGroup>

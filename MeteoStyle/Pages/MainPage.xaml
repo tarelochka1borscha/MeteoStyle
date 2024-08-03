@@ -4,9 +4,16 @@
              x:Class="MeteoStyle.Pages.MainPage"
              Title="MainPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <VerticalStackLayout>
+            <Image Source="dotnet_bot.png" WidthRequest="200"/>
+            <Label Text="31 C" HorizontalOptions="Center"/>
+            <Label Text="Ветренно" HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+        <Label x:Name="LabelClother" Text="Рекомендации" HeightRequest="100"/>
+        <HorizontalStackLayout>
+            <Label Text="1"/>
+            <Label Text="1"/>
+            <Label Text="1"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
