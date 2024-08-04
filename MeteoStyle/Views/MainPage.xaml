@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeteoStyle.Views.MainPage"
+             Title="MainPage">
+    <VerticalStackLayout HorizontalOptions="Center">
+        <VerticalStackLayout>
+            <Image Source="dotnet_bot.png" WidthRequest="200"/>
+            <Label Text="31 C" HorizontalOptions="Center" Margin="0,10,0,0"/>
+            <Label Text="Ветренно" HorizontalOptions="Center" Margin="0,0,0,10"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout>
+            <Border StrokeThickness="1">
+            <Label Text="Рекомендации" WidthRequest="300" Margin="10"/>
+            </Border>
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0" HeightRequest="70">
+                <Button Command ="{Binding ChoiceFeelingsClick}" CommandParameter="cold" IsEnabled="{Binding CanChoice}" FontSize="{Binding ColdEmojiSize}" Text="🥶" Background="Transparent" Margin="5"/>
+                <Button Command ="{Binding ChoiceFeelingsClick}" CommandParameter="comfort" IsEnabled="{Binding CanChoice}" FontSize="{Binding ComfortEmojiSize}" Text="🙂" Background="Transparent" Margin="5"/>
+                <Button Command ="{Binding ChoiceFeelingsClick}" CommandParameter="warm" IsEnabled="{Binding CanChoice}" FontSize="{Binding WarmEmojiSize}" Text="🥵" Background="Transparent" Margin="5"/>
+                </HorizontalStackLayout>
+            <Label Text="{Binding MessageText}" HorizontalOptions="Center" Margin="10"/>
+            </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

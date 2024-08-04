@@ -1,11 +1,10 @@
-﻿using MeteoStyle.Pages;
+﻿using MeteoStyle.ViewModels;
+using MeteoStyle.Views;
 
 namespace MeteoStyle
 {
     public partial class WelcomePage : ContentPage
     {
-        int count = 0;
-
         public WelcomePage()
         {
             InitializeComponent();
