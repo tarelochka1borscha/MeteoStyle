@@ -18,7 +18,7 @@
                 <Button Command ="{Binding ChoiceFeelingsClick}" CommandParameter="comfort" IsEnabled="{Binding CanChoice}" FontSize="{Binding ComfortEmojiSize}" Text="🙂" Background="Transparent" Margin="5"/>
                 <Button Command ="{Binding ChoiceFeelingsClick}" CommandParameter="warm" IsEnabled="{Binding CanChoice}" FontSize="{Binding WarmEmojiSize}" Text="🥵" Background="Transparent" Margin="5"/>
                 </HorizontalStackLayout>
-            <Label Text="{Binding MessageText}" HorizontalOptions="Center" Margin="10"/>
+            <Label Text="{Binding MessageText}" WidthRequest="350" HorizontalOptions="Center" Margin="10"/>
             </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

@@ -18,5 +18,4 @@ namespace MeteoStyle
             await Navigation.PushAsync(new MainPage(EntryCity.Text, selectedType));
         }
     }
-
 }
