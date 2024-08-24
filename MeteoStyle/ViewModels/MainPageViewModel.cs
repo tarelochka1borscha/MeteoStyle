@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -22,7 +23,43 @@ namespace MeteoStyle.ViewModels
             }
         }
 
-        string messageText = "Комфортны ли для Вас рекомендации?";
+        private string messageText = "Комфортны ли для Вас рекомендации?";
+
+        public string TemperatureText
+        {
+            get => temperatureText;
+            set
+            {
+                temperatureText = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(TemperatureText)));
+            }
+        }
+
+        private string temperatureText = string.Empty;
+
+        public string WeatherText
+        {
+            get => weatherText;
+            set
+            {
+                weatherText = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(WeatherText)));
+            }
+        }
+
+        private string weatherText = string.Empty;
+
+        public string ImageUrl
+        {
+            get => imageUrl;
+            set
+            {
+                imageUrl = value;
+                PropertyChanged(this, new PropertyChangedEventArgs(nameof(ImageUrl)));
+            }
+        }
+
+        private string imageUrl = string.Empty;
 
         public bool CanChoice
         {
@@ -34,7 +71,7 @@ namespace MeteoStyle.ViewModels
             }
         }
 
-        bool canChoice = true;
+        private bool canChoice = true;
 
         public int ColdEmojiSize
         {
@@ -66,7 +103,7 @@ namespace MeteoStyle.ViewModels
             }
         }
 
-        int emojiSize = 25;
+        private int emojiSize = 25;
 
         public ICommand ChoiceFeelingsClick { get; set; }
 
@@ -99,26 +136,21 @@ namespace MeteoStyle.ViewModels
         public MainPageViewModel(string currentCity, int selectedType)
         {
             ChoiceFeelingsClick = new Command(ChoiceFeelings);
+
+            GetAndInsertWeatherData(currentCity.Trim());
         }
 
-        
+        private const string KEY = "7b4965a55f262b398bac64a46a2a3a0a";
 
-        //private void ChoiceFeelings(object sender, EventArgs e)
-        //{
-        //    ButtonCold.FontSize = 25;
-        //    ButtonNormal.FontSize = 25;
-        //    ButtonWarm.FontSize = 25;
-        //    CanChoice = false;
-        //    Button selectedButton = (Button)sender;
-        //    selectedButton.FontSize = 35;
-        //    if (selectedButton != ButtonNormal)
-        //    {
-        //        LabelMessage.Text = "В следующий раз мы будем более внимательны :c";
-        //    }
-        //    else
-        //    {
-        //        LabelMessage.Text = "Рады Вам помочь <3";
-        //    }
-        //}
+        private void GetAndInsertWeatherData(string currentCity)
+        {
+            HttpClient client = new HttpClient();
+            string url = $"https://api.openweathermap.org/data/2.5/weather?q={currentCity}&appid={KEY}&units=metric&lang=ru";
+            var data = JObject.Parse(client.GetStringAsync(url).Result);
+            temperatureText = Convert.ToInt32(data["main"]["temp"]).ToString()+ "°C";
+            string weather = data["weather"][0]["description"].ToString();
+            weatherText = Char.ToUpper(weather[0]) + weather.Substring(1);
+            imageUrl = "https://openweathermap.org/img/wn/" + data["weather"][0]["icon"].ToString() + "@2x.png";
+        }
     }
 }
