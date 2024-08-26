@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using MeteoStyle.ProgramData;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -138,19 +140,32 @@ namespace MeteoStyle.ViewModels
             ChoiceFeelingsClick = new Command(ChoiceFeelings);
 
             GetAndInsertWeatherData(currentCity.Trim());
+            a();
         }
 
-        private const string KEY = "7b4965a55f262b398bac64a46a2a3a0a";
+        private const string API_KEY = "7b4965a55f262b398bac64a46a2a3a0a";
 
         private void GetAndInsertWeatherData(string currentCity)
         {
             HttpClient client = new HttpClient();
-            string url = $"https://api.openweathermap.org/data/2.5/weather?q={currentCity}&appid={KEY}&units=metric&lang=ru";
+            string url = $"https://api.openweathermap.org/data/2.5/weather?q={currentCity}&appid={API_KEY}&units=metric&lang=ru";
             var data = JObject.Parse(client.GetStringAsync(url).Result);
-            temperatureText = Convert.ToInt32(data["main"]["temp"]).ToString()+ "°C";
+            temperatureText = Convert.ToInt32(data["main"]["temp"]).ToString() + "°C";
             string weather = data["weather"][0]["description"].ToString();
             weatherText = Char.ToUpper(weather[0]) + weather.Substring(1);
             imageUrl = "https://openweathermap.org/img/wn/" + data["weather"][0]["icon"].ToString() + "@2x.png";
         }
+
+        private string userFeelingsPath;
+
+        void a()
+        {
+            userFeelingsPath = "C:/Some Projects/MeteoStyle/MeteoStyle/WeatherData/UserFeelings.json";
+            var aa = new FeelingsType();
+            aa.Id = 1;
+            aa.Description = "Обычные ощущения";
+            string json = JsonConvert.SerializeObject(aa);
+            File.WriteAllText(userFeelingsPath, json);
     }
+}
 }
